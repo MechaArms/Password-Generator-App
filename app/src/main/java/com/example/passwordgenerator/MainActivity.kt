@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.passwordgenerator.ui.theme.PasswordGeneratorTheme
-import com.example.passwordgenerator.ui.theme.ui.PasswordGenerator
+import com.example.passwordgenerator.ui.theme.ui.ScreenPasswordApp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PasswordGenerator()
+                    ScreenPasswordApp()
                 }
             }
         }
@@ -34,6 +34,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     PasswordGeneratorTheme {
-        PasswordGenerator()
+        ScreenPasswordApp()
     }
 }

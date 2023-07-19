@@ -23,7 +23,7 @@ class MainViewModel : ViewModel() {
             val rIndex = random.nextInt(characterSet.length)
             password.append(characterSet[rIndex])
         }
-        updateUiState(password.toString())   // Exemple: UFJr7thw
+        updateUiState(password.toString())   // Exemple: UFJr7t@w
     }
 
     private fun updateUiState(updatedPassword: String) {

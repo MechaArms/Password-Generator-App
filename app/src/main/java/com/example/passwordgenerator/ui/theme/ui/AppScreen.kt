@@ -15,12 +15,24 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun PasswordGenerator(
-    modifier: Modifier = Modifier,
-    vm: MainViewModel = viewModel()
-){
+fun ScreenPasswordApp(vm: MainViewModel = viewModel()){
     val uiState by vm.uiState.collectAsState()
+    PasswordGenerator(
+        numberLetters = uiState.numberOfLetters,
+        generatePassword = { vm.getRandPassword(it) },
+        showPassword = uiState.currentPassword
+    )
+}
+
+@Composable
+fun PasswordGenerator(
+    numberLetters: Int,
+    generatePassword: (Int) -> Unit,
+    showPassword: String
+){
+
     val n = 8  //password with 8 letters
+
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -33,12 +45,12 @@ fun PasswordGenerator(
             fontWeight = FontWeight.Bold
         )
 
-        Button(onClick = { vm.getRandPassword(n) }) {
+        Button(onClick = { generatePassword(n) }) {
             Text (text = "Generate password")
         }
 
         /* get the password */
-        Text(text = uiState.currentPassword)
+        Text(text = showPassword)
 
     }
 }
