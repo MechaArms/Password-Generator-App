@@ -23,14 +23,28 @@ class MainViewModel : ViewModel() {
             val rIndex = random.nextInt(characterSet.length)
             password.append(characterSet[rIndex])
         }
-        updateUiState(password.toString())   // Exemple: UFJr7t@w
+        updateUiState(password.toString(),n.toString())   // Exemple: UFJr7t@w
     }
 
-    private fun updateUiState(updatedPassword: String) {
+    private fun updateUiState(updatedPassword: String, updateSizePassword:String) {
+        val updateWordSize = "\nThis password have a $updateSizePassword letters,\n ${isSecurity(updateSizePassword.toInt())}"
+
         _uiState.update { currentState ->
             currentState.copy(
-                currentPassword = updatedPassword
+                currentPassword = updatedPassword,
+                numberOfLetters = updateWordSize
             )
         }
+    }
+
+    private fun isSecurity(isSafe: Int): String {
+        val text: String
+        when(isSafe){
+            in 0..7 -> text = "is a weak password"
+            in 8..12 -> text = "is a good password"
+            in 13..16 -> text = "is a strong password"
+            else -> text = "is a very strong password"
+        }
+        return text
     }
 }
