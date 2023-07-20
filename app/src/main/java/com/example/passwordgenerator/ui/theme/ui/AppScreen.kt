@@ -2,7 +2,6 @@ package com.example.passwordgenerator.ui.theme.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -16,10 +15,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.passwordgenerator.R
+import com.example.passwordgenerator.ui.theme.PasswordGeneratorTheme
 import kotlin.math.roundToInt
 
 @Composable
@@ -41,19 +43,21 @@ fun PasswordGenerator(
     var sliderPosition by rememberSaveable { mutableStateOf(5f) }
 
     Column(
-        verticalArrangement = Arrangement.Center,
+//        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.spacedBy(
+            space = dimensionResource(R.dimen.padding_extra_large),
+            alignment = Alignment.CenterVertically
+        ),
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp)
-    ) {
+            .padding(dimensionResource(R.dimen.padding_large)),
+            ) {
         Text (
             text = "Password Generator",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
-
-        Spacer(modifier = Modifier.padding(24.dp))
 
         Slider(
             value = sliderPosition,
@@ -61,21 +65,23 @@ fun PasswordGenerator(
             valueRange = 5f..30f
         )
 
-        Text(text = "Size: ${sliderPosition.toInt()}")
-
-        Spacer(modifier = Modifier.padding(24.dp))
+        Text(text = "Password Size: ${sliderPosition.toInt()}")
 
         Button(onClick = { generatePassword(sliderPosition.roundToInt()) }) {
             Text (text = "Generate password")
         }
 
-        Spacer(modifier = Modifier.padding(24.dp))
-
         /* get the password */
         Text(text = showPassword)
 
-        Spacer(modifier = Modifier.padding(24.dp))
-
         Text(text = numberLetters)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    PasswordGeneratorTheme {
+        ScreenPasswordApp()
     }
 }
