@@ -1,4 +1,4 @@
-package com.example.passwordgenerator.ui.theme.ui
+package com.example.passwordgenerator.ui
 import kotlin.random.Random
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

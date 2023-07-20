@@ -1,10 +1,12 @@
-package com.example.passwordgenerator.ui.theme.ui
+package com.example.passwordgenerator.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,9 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.passwordgenerator.R
 import com.example.passwordgenerator.ui.theme.PasswordGeneratorTheme
@@ -55,26 +55,46 @@ fun PasswordGenerator(
             ) {
         Text (
             text = "Password Generator",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
+            style = MaterialTheme.typography.titleLarge
         )
 
-        Slider(
-            value = sliderPosition,
-            onValueChange = { sliderPosition = it.roundToInt().toFloat() },
-            valueRange = 5f..30f
-        )
-
-        Text(text = "Password Size: ${sliderPosition.toInt()}")
+        Row (
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .padding(dimensionResource(R.dimen.padding_small))
+        ){
+            Text(
+                text = "Size: ${sliderPosition.toInt()}",
+                modifier = Modifier
+                    .padding(
+                        top =dimensionResource(R.dimen.padding_small),
+                        end = dimensionResource(R.dimen.padding_medium),
+                    )
+            )
+            Slider(
+                value = sliderPosition,
+                onValueChange = { sliderPosition = it.roundToInt().toFloat() },
+                valueRange = 5f..25f
+            )
+        }
 
         Button(onClick = { generatePassword(sliderPosition.roundToInt()) }) {
-            Text (text = "Generate password")
+            Text (
+                text = "Generate password",
+                style = MaterialTheme.typography.bodyLarge
+            )
         }
 
         /* get the password */
-        Text(text = showPassword)
+        Text(
+            text = showPassword,
+            style = MaterialTheme.typography.bodyLarge
+        )
 
-        Text(text = numberLetters)
+        Text(
+            text = numberLetters,
+            style = MaterialTheme.typography.bodyLarge
+        )
     }
 }
 

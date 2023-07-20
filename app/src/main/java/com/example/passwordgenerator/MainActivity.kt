@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.passwordgenerator.ui.theme.PasswordGeneratorTheme
-import com.example.passwordgenerator.ui.theme.ui.ScreenPasswordApp
+import com.example.passwordgenerator.ui.ScreenPasswordApp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

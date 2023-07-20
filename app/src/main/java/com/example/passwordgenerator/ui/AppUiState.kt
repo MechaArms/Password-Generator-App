@@ -1,4 +1,4 @@
-package com.example.passwordgenerator.ui.theme.ui
+package com.example.passwordgenerator.ui
 
 data class AppUiState (
     val currentPassword: String = "",
