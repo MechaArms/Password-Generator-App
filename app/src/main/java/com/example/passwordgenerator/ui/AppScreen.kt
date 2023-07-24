@@ -18,10 +18,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.passwordgenerator.R
-import com.example.passwordgenerator.ui.theme.PasswordGeneratorTheme
 import kotlin.math.roundToInt
 
 @Composable
@@ -95,13 +93,5 @@ fun PasswordGenerator(
             text = numberLetters,
             style = MaterialTheme.typography.bodyLarge
         )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PasswordGeneratorTheme {
-        ScreenPasswordApp()
     }
 }
